@@ -1,0 +1,70 @@
+CRITICAL - 2022-05-25 17:30:39 --> Call to a member function table() on null
+#0 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(832): App\Controllers\Login->entrar()
+#1 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-05-25 17:30:48 --> Call to a member function table() on null
+#0 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(832): App\Controllers\Login->entrar()
+#1 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-05-25 17:32:27 --> Call to a member function table() on null
+#0 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(832): App\Controllers\Login->entrar()
+#1 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-05-25 17:32:44 --> Call to a member function table() on null
+#0 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(832): App\Controllers\Login->entrar()
+#1 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#2 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-05-25 17:34:10 --> Undefined property: App\Controllers\Login::$db
+#0 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/app/Controllers/Login.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/home/u92710028...', 25, Array)
+#1 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(832): App\Controllers\Login->entrar()
+#2 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-05-25 17:34:17 --> Undefined property: App\Controllers\Login::$db
+#0 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/app/Controllers/Login.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/home/u92710028...', 25, Array)
+#1 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(832): App\Controllers\Login->entrar()
+#2 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-05-25 17:36:28 --> Undefined variable: q
+#0 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/app/Controllers/Login.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/home/u92710028...', 25, Array)
+#1 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(832): App\Controllers\Login->entrar()
+#2 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-05-25 17:55:08 --> Error connecting to the database: Connection timed out
+CRITICAL - 2022-05-25 17:55:08 --> Unable to connect to the database.
+Main connection [MySQLi]: Connection timed out
+#0 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/Database/BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/Database/BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/app/Controllers/Login.php(23): CodeIgniter\Database\BaseBuilder->get(1)
+#3 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(832): App\Controllers\Login->entrar()
+#4 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-05-25 18:02:06 --> Undefined index: usuario
+#0 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/app/Controllers/Login.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', '/home/u92710028...', 23, Array)
+#1 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(832): App\Controllers\Login->entrar()
+#2 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-05-25 18:02:29 --> Undefined index: usuario
+#0 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/app/Controllers/Login.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', '/home/u92710028...', 23, Array)
+#1 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(832): App\Controllers\Login->entrar()
+#2 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/u927100286/domains/drtecnologia.com.co/public_html/pig/public/index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
