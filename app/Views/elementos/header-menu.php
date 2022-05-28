@@ -50,7 +50,7 @@ License: For each use you must have a valid license purchased only from above li
 		<nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-          Noble<span>UI</span>
+          PIG<span>.in</span>
         </a>
         <div class="sidebar-toggler not-active">
           <span></span>
@@ -67,8 +67,8 @@ License: For each use you must have a valid license purchased only from above li
               <span class="link-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item nav-category">web apps</li>
-          <li class="nav-item">
+          <li class="nav-item nav-category">Account</li><!--
+          <li class="nav-item"> 
             <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
               <i class="link-icon" data-feather="mail"></i>
               <span class="link-title">Email</span>
@@ -87,17 +87,23 @@ License: For each use you must have a valid license purchased only from above li
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
           <li class="nav-item">
-            <a href="../../pages/apps/chat.html" class="nav-link">
+            <a href="<?= base_url() ?>/CreateUser/" class="nav-link">
               <i class="link-icon" data-feather="message-square"></i>
-              <span class="link-title">Chat</span>
+              <span class="link-title">Create</span>
             </a>
           </li>
           <li class="nav-item">
             <a href="../../pages/apps/calendar.html" class="nav-link">
               <i class="link-icon" data-feather="calendar"></i>
-              <span class="link-title">Calendar</span>
+              <span class="link-title">List</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= base_url() ?>/Rol/" class="nav-link">
+              <i class="link-icon" data-feather="calendar"></i>
+              <span class="link-title">Rol</span>
             </a>
           </li>
           <li class="nav-item nav-category">Components</li>

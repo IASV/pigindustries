@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-	<title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+	<title>Pig Industries</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,6 @@
 
   <!-- Layout styles -->  
 	<link rel="stylesheet" href="<?= base_url() ?>/assets/css/demo1/style.css">
-  <link rel="stylesheet" href="<?= base_url() ?>/assets/css/login.css">
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="<?= base_url() ?>/assets/images/favicon.png" />
@@ -45,7 +44,7 @@
 							<div class="row">
                 <div class="col-md-4 pe-md-0">
                   <div class="auth-side-wrapper">
-                    <img src="<?= base_url() ?>/assets/images/peppa.jpg" class="imagen" alt="" width="215" height="452">
+                    <img src="<?= base_url() ?>/assets/images/peppa.jpg" class="imagen" alt="" width= 215 height= 452>
                   </div>
                 </div>
                 <div class="col-md-8 ps-md-0">
