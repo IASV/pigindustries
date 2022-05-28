@@ -24,10 +24,12 @@ class Rol extends BaseController
         if($data['rol'] != ''){
             $sql = "INSERT INTO rol (rol) VALUES (?)";
             $query = $this->db->query($sql, [$data['rol']]);
+            print_r('ok');
+            return;
         } else {
-            print_r('void');
+            print_r('error');
         }
-        
+
         return;
     }
 
