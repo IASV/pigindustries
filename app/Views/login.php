@@ -49,8 +49,8 @@
                 </div>
                 <div class="col-md-8 ps-md-0">
                   <div class="auth-form-wrapper px-4 py-5">
-                    <a href="#" class="noble-ui-logo d-block mb-2">Noble<span>UI</span></a>
-                    <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
+                    <a href="#" class="noble-ui-logo d-block mb-2">PIG<span>Industries</span></a>
+                    <h5 class="text-muted fw-normal mb-4">United States, Spain, Mexico, Korea...</h5>
                       <div class="mb-3">
                         <label for="userEmail" class="form-label">Usuario</label>
                         <input type="text" class="form-control" id="usuario">

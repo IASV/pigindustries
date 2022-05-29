@@ -13,24 +13,32 @@ class Rol extends BaseController
 
     public function index()
     {
-        return view('elementos/header-menu').view('account/rol').view('elementos/footer');
+        $rols = $query = $this->db->table('rol')->get()->getResultArray();                
+        $data = array("rols" => $rols);
+
+        return view('elementos/header-menu').view('account/rol', $data).view('elementos/footer');
     }
 
     public function add()
     {
-        $data = $this->request->getPost();
-        print_r($data['rol']);
+        $data = $this->request->getPost();        
 
         if($data['rol'] != ''){
             $sql = "INSERT INTO rol (rol) VALUES (?)";
-            $query = $this->db->query($sql, [$data['rol']]);
+            $query = $this->db->query($sql, [strtolower($data['rol'])]);            
             print_r('ok');
-            return;
+            return redirect()->to('/Rol');
         } else {
             print_r('error');
         }
+    }
 
-        return;
+    public function delete($id)
+    {
+        $sql = "DELETE FROM rol WHERE  id_rol = ?";
+        $query = $this->db->query($sql, [$id]);            
+        print_r('ok');
+        return redirect()->to('/Rol');
     }
 
 }

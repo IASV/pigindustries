@@ -19,28 +19,26 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Data Table</h6>
+                    <h6 class="card-title">Rols</h6>
                     <div class="table-responsive">
                         <table id="dataTableExample" class="table">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>ROL</th>
+                                    <th>Options</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php foreach ($rols as $key => $r): ?>
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
+                                    <td><?= ($key + 1)?></td>
+                                    <td><?= $r['rol'] ?></td>
+                                    <td>
+                                        <a class="btn btn-danger text-white me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Rol/delete/<?= $r['id_rol'] ?>">Delete</a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>Garrett Winters</td>
-                                    <td>Accountant</td>
-                                </tr>
-                                <tr>
-                                    <td>Ashton Cox</td>
-                                    <td>Junior Technical Author</td>
-                                </tr>                           
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
@@ -55,42 +53,31 @@
 <script>
 
   const Toast = Swal.mixin({
-    toast: true,
-    position: 'bottom',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
+        toast: true,
+        position: 'bottom',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+     })
 
   
 
-  function add() {
-  
-
-    $.post("<?= base_url() ?>/Rol/add", {'rol': $("#rol").val()}, function (data) {
-
-        console.log(data);
-        if (data=='error') {
-        
-        Toast.fire({
-          icon: 'error',
-          title: 'Error '
-        });
-
-      }
-
-
-      if (data=='ok') {        
-        window.location.href = '<?= base_url() ?>/Rol';
-      }
-
-      
-      
-    });
+    function add() {
+        $.post("<?= base_url() ?>/Rol/add", {'rol': $("#rol").val()}, function (data) {        
+            if (data=='error') {        
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Error '
+                });
+            }
+            if (data=='ok') {        
+                window.location.href = '<?= base_url() ?>/Rol';
+            }
+        });    
     }
 
 </script>
