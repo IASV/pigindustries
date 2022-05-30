@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+class Cerdos extends BaseController
 {
     
     public function __construct()
@@ -11,11 +11,28 @@ class Home extends BaseController
         $this->session = \Config\Services::session();
 		$this->request = \Config\Services::request();
     }
-    
 
     public function index()
     {
-        //return view('welcome_message');
-        print_r("Añadir cerdos");
+        $cerdo = $query = $this->db->table('animal')->get()->getResultArray();                
+        $data = array("cerdo" => $cerdo);
+
+
+        return view('elementos/header-menu').view('account/cerdos').view('elementos/footer');
+    }
+
+    public function crear()
+    {
+        $data = $this->request->getPost();
+
+        if($data!= ''){
+            $sql = "INSERT INTO raza (raza), peso (peso), fecha_nacimiento(fecha_nacimiento), estado(estado)  VALUES (?)";
+            //$query = $this->db->query($sql, [strtolower($data['raza'])]);            
+            print_r('ok');
+            return redirect()->to('/cerdos');
+
+        } else {
+            print_r('error');
+        }
     }
 }
