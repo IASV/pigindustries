@@ -42,7 +42,7 @@
                                     <label class="form-label" for="lote">Lote</label>
                                     <select class="form-select" name="lote" id="lote">
                                         <?php foreach($lotes as $lote): ?>
-                                        <option value="<?= $lote['nombre'] ?>"><?= $lote['nombre'] ?></option>                                        
+                                        <option value="<?= $lote['id'] ?>"><?= $lote['nombre'] ?></option>                                        
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -112,10 +112,26 @@
 
   function create() {
   
-    $.post("<?= base_url() ?>/Cerdos/create", {'raza': $("#raza").val(), 'peso': $("#peso").val(), 'fecha_nacimiento': $("#fecha_nacimiento").val(),'estado': $("#estado").val(), 'lote': $("#lote").val()}, function (data) {
-     
-        console.log(data['raza']);
+    let formData = {
+        'raza': $("#raza").val(), 
+        'fecha-nacimiento': $("#fecha-nacimiento").val(),
+        'peso': $("#peso").val(),         
+        'estado': $("#estado").val(), 
+        'lote': $("#lote").val()
+    }
 
+    //console.log(formData['raza']);
+
+    $.post("<?= base_url() ?>/Cerdos/create", formData, function (data) {     
+        if (data=='error') {        
+            Toast.fire({
+                icon: 'error',
+                title: 'Error '
+            });
+        }
+        if (data=='ok') {        
+            window.location.href = '<?= base_url() ?>/Cerdos';
+        }
     });
 
   }

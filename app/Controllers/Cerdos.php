@@ -25,8 +25,16 @@ class Cerdos extends BaseController
     public function create()
     {
         $data = $this->request->getPost();        
-
-        return;
+        if($data['raza'] != '' && $data['peso'] != ''){
+            //Tabla cerdo
+            $sql = "INSERT INTO animal (raza,fecha_nacimiento,estado) VALUES (?,?,?)";
+            $query = $this->db->query($sql, [strtolower($data['raza']),strtolower($data['fecha-nacimiento']),strtolower($data['rol']),strtolower($data['estado'])])->get()->getResultArray();            
+            //Tabla peso
+            print_r('ok');
+            return redirect()->to('/Rol');
+        } else {
+            print_r('error');
+        }
     }
 
     public function getData(){
