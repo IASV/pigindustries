@@ -18,7 +18,7 @@ class Lote extends BaseController
 
         $data = $this->getData();
 
-        return view('elementos/header-menu').view('account/lote', $data).view('elementos/footer');
+        return view('elementos/header-menu').view('pig/lote', $data).view('elementos/footer');
     }
 
     public function add()

@@ -19,7 +19,7 @@ class Cerdos extends BaseController
 
         $data = $this->getData();
 
-        return view('elementos/header-menu').view('account/cerdos', $data).view('elementos/footer');
+        return view('elementos/header-menu').view('pig/cerdos', $data).view('elementos/footer');
     }
 
     public function create()
