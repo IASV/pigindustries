@@ -112,7 +112,13 @@ License: For each use you must have a valid license purchased only from above li
               <i class="link-icon" data-feather="calendar"></i>
               <span class="link-title">Añadir</span>
             </a>
-          </li>          
+          </li>   
+          <li class="nav-item">
+            <a href="<?= base_url() ?>/Lote/" class="nav-link">
+              <i class="link-icon" data-feather="calendar"></i>
+              <span class="link-title">Lote</span>
+            </a>
+          </li>        
           <li class="nav-item nav-category">Docs</li>
           <li class="nav-item">
             <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">

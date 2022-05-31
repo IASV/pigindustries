@@ -14,33 +14,42 @@
                             </div><!-- Col -->
                             <div class="col-sm-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Peso</label>
-                                    <input type="text" class="form-control"  placeholder="Peso animal" id="peso">
+                                    <label class="form-label" for="fecha-nacimiento">Fecha de nacimiento</label>
+                                    <input type="date" class="form-control"  placeholder="Fecha nacimiento" id="fecha-nacimiento" require>
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="mb-3">
-                                    <label class="form-label">Fecha de Nacimiento</label>
-                                    <input type="text" class="form-control" placeholder="Fecha nacimeinto animal" id="fecha-nacimiento" >
+                                    <label class="form-label">Peso</label>
+                                    <input type="number" class="form-control" placeholder="Peso" id="peso" >
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-4">
                                 <div class="mb-3">
-                                    <label class="form-label">Estado</label>
-                                    <input type="text" class="form-control" placeholder="Estado animal" id="estado">
+                                    <label class="form-label" for="estado">Estado</label>
+                                    <select class="form-select" name="estado" id="estado">
+                                        <option value="vivo">Vivo</option>
+                                        <option value="enfermo">Enfermo</option>
+                                        <option value="muerto">Muerto</option>
+                                        <option value="sacrificio">Sacrificado</option>
+                                    </select>
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-4">
                                 <div class="mb-3">
-                                    <label class="form-label">Lote</label>
-                                    <input type="text" class="form-control" placeholder="Lote animal" id="lote">
+                                    <label class="form-label" for="lote">Lote</label>
+                                    <select class="form-select" name="lote" id="lote">
+                                        <?php foreach($lotes as $lote): ?>
+                                        <option value="<?= $lote['nombre'] ?>"><?= $lote['nombre'] ?></option>                                        
+                                        <?php endforeach ?>
+                                    </select>
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
                     </form>
-                    <button type="button" class="btn btn-primary submit" onclick="crear()">Crear</button>
+                    <button type="button" class="btn btn-primary submit" onclick="create()">Crear</button>
                 </div>
             </div>
         </div>
@@ -83,7 +92,7 @@
     </div>
 </div>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
 
 <script>
 
@@ -101,27 +110,12 @@
 
   
 
-  function crear() {
+  function create() {
   
-
-    $.post("<?= base_url() ?>/Cerdos/crear", {'raza': $("#raza").val(), 'peso': $("#peso").val(), 'fecha_nacimiento': $("#fecha_nacimiento").val(),'estado': $("#estado").val(), 'lote': $("#lote").val()}, function (data) {
+    $.post("<?= base_url() ?>/Cerdos/create", {'raza': $("#raza").val(), 'peso': $("#peso").val(), 'fecha_nacimiento': $("#fecha_nacimiento").val(),'estado': $("#estado").val(), 'lote': $("#lote").val()}, function (data) {
      
-        console.log(data["raza"]);
-      if (data=='error') {
-        
-        Toast.fire({
-          icon: 'error',
-          title: 'No se pudo realizar el registro '
-        });
+        console.log(data['raza']);
 
-      }
-
-
-      if (data=='ok') {
-        
-        window.location.href = '<?= base_url() ?>';
-      }
-      
     });
 
   }

@@ -14,25 +14,32 @@ class Cerdos extends BaseController
 
     public function index()
     {
-        $cerdo = $query = $this->db->table('animal')->get()->getResultArray();                
-        $data = array("cerdo" => $cerdo);
+        //$cerdo = $query = $this->db->table('animal')->get()->getResultArray();                
+        //$data = array("cerdo" => $cerdo);
 
+        $data = $this->getData();
 
-        return view('elementos/header-menu').view('account/cerdos').view('elementos/footer');
+        return view('elementos/header-menu').view('account/cerdos', $data).view('elementos/footer');
     }
 
-    public function crear()
+    public function create()
     {
-        $data = $this->request->getPost();
+        $data = $this->request->getPost();        
 
-        if($data!= ''){
-            $sql = "INSERT INTO raza (raza), peso (peso), fecha_nacimiento(fecha_nacimiento), estado(estado)  VALUES (?)";
-            //$query = $this->db->query($sql, [strtolower($data['raza'])]);            
-            print_r('ok');
-            return redirect()->to('/cerdos');
+        return;
+    }
 
-        } else {
-            print_r('error');
-        }
+    public function getData(){
+        //consulta de lotes
+        $lotes = $query = $this->db->table('lote')->get()->getResultArray();     
+        //consulta de animales
+        $cerdos = $query = $this->db->table('animal')->get()->getResultArray();                
+        //data
+        $data = array(
+            "cerdos" => $cerdos, 
+            "lotes" => $lotes
+        );
+
+        return $data;
     }
 }
