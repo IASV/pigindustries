@@ -27,7 +27,7 @@ class Lote extends BaseController
 
         if($data['nombre'] != ''){
             $sql = "INSERT INTO lote (nombre) VALUES (?)";
-            $query = $this->db->query($sql, [strtolower($data['nombre'])]);            
+            $query = $this->db->query($sql, [strtolower($data['nombre'])])->get()->getResultArray();            
             print_r('ok');
             return redirect()->to('/Lote');
         } else {

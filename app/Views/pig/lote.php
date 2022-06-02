@@ -76,7 +76,7 @@
             }
             if (data=='ok') {        
                 window.location.href = '<?= base_url() ?>/Lote';
-            }
+            }            
         });    
     }
 

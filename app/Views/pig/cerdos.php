@@ -6,23 +6,29 @@
                     <h6 class="card-title">Añadir Animal</h6>
                     <form>
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label">Raza</label>
                                     <input type="text" class="form-control" placeholder="Raza animal" id="raza">
                                 </div>
                             </div><!-- Col -->
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="fecha-nacimiento">Fecha de nacimiento</label>
                                     <input type="date" class="form-control"  placeholder="Fecha nacimiento" id="fecha-nacimiento" require>
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-4">
+                                <div class="mb-3">
+                                    <label class="form-label" for="fecha-nacimiento">Comprado</label>
+                                    <input type="number" class="form-control"  placeholder="Precio" id="comprado" require>
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="mb-3">
-                                    <label class="form-label">Peso</label>
+                                    <label class="form-label">Peso (kg)</label>
                                     <input type="number" class="form-control" placeholder="Peso" id="peso" >
                                 </div>
                             </div><!-- Col -->
@@ -48,6 +54,26 @@
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="mb-3">
+                                    <label class="form-label">Enfermedad</label>
+                                    <input type="text" disabled="disabled" class="form-control" placeholder="Nombre" id="enfermedad">
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-4">
+                                <div class="mb-3">
+                                    <label class="form-label" for="fecha-nacimiento">Fecha del sacrificio</label>
+                                    <input type="date" disabled="disabled" class="form-control"  placeholder="Fecha sacrificio" id="fecha-sacrificio" require>
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-4">
+                                <div class="mb-3">
+                                    <label class="form-label" for="fecha-nacimiento">Causa de muerte</label>
+                                    <input type="text" disabled="disabled" class="form-control"  placeholder="Causa" id="causa-muerte" require>
+                                </div>
+                            </div><!-- Col -->
+                        </div><!-- Row -->
                     </form>
                     <button type="button" class="btn btn-primary submit" onclick="create()">Crear</button>
                 </div>
@@ -67,22 +93,28 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Raza</th>
-                                    <th>Peso</th>
+                                    <th>Peso (kg)</th>
                                     <th>Fecha Nacimiento</th>
                                     <th>Estado</th>
+                                    <th>Lote</th>
+                                    <th>Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php foreach($animales as $animal): ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Pietran</td>
-                                    <td>12</td>
-                                    <td>12/julio/2021</td>
-                                    <th>Vivo</th>
-                                    <td>
-                                        <a class="btn btn-danger text-white me-2 mb-2 mb-md-0" href="">Delete</a>
+                                    <td><?= $animal['id'] ?></td>
+                                    <td><?= $animal['raza'] ?></td>
+                                    <td><?= $animal['peso'] ?></td>
+                                    <td><?= $animal['fecha_nacimiento'] ?></td>
+                                    <th><?= $animal['estado'] ?></th>
+                                    <th><?= $animal['lote'] ?></th>
+                                    <td>                                        
+                                        <a class="btn btn-danger text-white me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Cerdos/delete/<?= $animal['id'] ?>">Eliminar</a>
+                                        <a class="btn btn-primary text-white me-2 mb-2 mb-md-0" href="">Editar</a>
                                     </td>
                                 </tr>
+                            <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
@@ -96,7 +128,26 @@
 
 <script>
 
-  const Toast = Swal.mixin({
+$( function() {
+    $("#estado").change( function() {
+        if ($(this).val() === "enfermo") {
+            $('#enfermedad').prop("disabled", false);
+        } /*
+        else if ($(this).val() === "muerto") {
+            $('#causa-muerte').prop("disabled", true);
+        }
+        else if ($(this).val() === "sacrificio") {
+            $('#fecha-sacrificio').prop("disabled", true);
+        } */ 
+        else {
+            $('#enfermedad').prop("disabled", true);
+            //$('#fecha-sacrificio').prop("disabled", false);
+            //$('#causa-muerte').prop("disabled", false);
+        }
+    });
+});
+  
+const Toast = Swal.mixin({
     toast: true,
     position: 'bottom',
     showConfirmButton: false,
@@ -120,18 +171,20 @@
         'lote': $("#lote").val()
     }
 
-    //console.log(formData['raza']);
-
     $.post("<?= base_url() ?>/Cerdos/create", formData, function (data) {     
+
+        console.log(formData);
+
         if (data=='error') {        
             Toast.fire({
                 icon: 'error',
                 title: 'Error '
             });
         }
-        if (data=='ok') {        
+        if (data=='ok') {                    
             window.location.href = '<?= base_url() ?>/Cerdos';
         }
+
     });
 
   }
