@@ -62,63 +62,75 @@ License: For each use you must have a valid license purchased only from above li
         <ul class="nav">
           <li class="nav-item nav-category">Main</li>
           <li class="nav-item">
-            <a href="../../dashboard.html" class="nav-link">
+            <a href="<?= base_url() ?>" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item nav-category">Account</li><!--
-          <li class="nav-item"> 
-            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Email</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="emails">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="../../pages/email/inbox.html" class="nav-link">Inbox</a>
-                </li>
-                <li class="nav-item">
-                  <a href="../../pages/email/read.html" class="nav-link">Read</a>
-                </li>
-                <li class="nav-item">
-                  <a href="../../pages/email/compose.html" class="nav-link">Compose</a>
-                </li>
-              </ul>
-            </div>
-          </li> -->
+          <!-- Account -->
+          <li class="nav-item nav-category">Account</li>
           <li class="nav-item">
             <a href="<?= base_url() ?>/CreateUser/" class="nav-link">
               <i class="link-icon" data-feather="message-square"></i>
-              <span class="link-title">Create</span>
+              <span class="link-title">Crear nuevo usuario</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url() ?>/Listar/" class="nav-link">
+            <a href="<?= base_url() ?>/ListarUsuarios/" class="nav-link">
               <i class="link-icon" data-feather="calendar"></i>
-              <span class="link-title">List</span>
+              <span class="link-title">Lista de usuarios</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?= base_url() ?>/Rol/" class="nav-link">
-              <i class="link-icon" data-feather="calendar"></i>
-              <span class="link-title">Rol</span>
+          <!-- Roles -->
+          <li class="nav-item"> 
+            <a class="nav-link" data-bs-toggle="collapse" href="#roles" role="button" aria-expanded="false" aria-controls="roles">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Roles</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
+            <div class="collapse" id="roles">
+              <ul class="nav sub-menu">                 
+                <li class="nav-item">
+                  <a href="<?= base_url() ?>/Rol/" class="nav-link">Crear rol</a>
+                </li>      
+                <li class="nav-item">
+                  <a href="<?= base_url() ?>/ListarRoles/" class="nav-link">Lista de roles</a>
+                </li>                         
+              </ul>
+            </div>
           </li>
+          <!-- Cerdos -->
           <li class="nav-item nav-category">Cerdos</li>
           <li class="nav-item">
             <a href="<?= base_url() ?>/Cerdos/" class="nav-link">
               <i class="link-icon" data-feather="calendar"></i>
-              <span class="link-title">Añadir</span>
+              <span class="link-title">Añadir nuevo cerdo</span>
             </a>
           </li>   
           <li class="nav-item">
-            <a href="<?= base_url() ?>/Lote/" class="nav-link">
+            <a href="<?= base_url() ?>/ListarCerdos/" class="nav-link">
               <i class="link-icon" data-feather="calendar"></i>
-              <span class="link-title">Lote</span>
+              <span class="link-title">Lista de cerdos</span>
             </a>
-          </li>        
+          </li>
+          <!-- Lotes -->
+          <li class="nav-item"> 
+            <a class="nav-link" data-bs-toggle="collapse" href="#lotes" role="button" aria-expanded="false" aria-controls="lotes">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Lotes</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="lotes">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="<?= base_url() ?>/Lote/" class="nav-link">Crear lote</a>
+                </li> 
+                <li class="nav-item">
+                  <a href="<?= base_url() ?>/ListarLotes/" class="nav-link">Lista de lotes</a>
+                </li>  
+              </ul>
+            </div>
+          </li>                
           <li class="nav-item nav-category">Docs</li>
           <li class="nav-item">
             <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">

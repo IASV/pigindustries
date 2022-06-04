@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Listar extends BaseController
+class ListarRoles extends BaseController
 {
     public function __construct()
     {
@@ -14,6 +14,6 @@ class Listar extends BaseController
     public function index()
     {
 
-        return view('elementos/header-menu').view('account/listar').view('elementos/footer');
+        return view('elementos/header-menu').view('rol/listar').view('elementos/footer');
     }
 }

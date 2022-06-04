@@ -17,7 +17,7 @@ class CreateUser extends BaseController
     {
         $data = $this->getData();
 
-        return view('elementos/header-menu').view('account/create', $data).view('elementos/footer');
+        return view('elementos/header-menu').view('account/crear', $data).view('elementos/footer');
     }
 
 

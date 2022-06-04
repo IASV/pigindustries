@@ -19,9 +19,12 @@
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-4">
+                                <div class="mb-2 form-label">
+                                    <input class="form-check-input" onchange="comprobar(this);" type="checkbox" value="" id="comprado">
+                                    <label class="form-check-label" for="comprado">Comprado</label>                                                                                                                                           
+                                </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="fecha-nacimiento">Comprado</label>
-                                    <input type="number" class="form-control"  placeholder="Precio" id="comprado" require>
+                                    <input type="number" disabled="disabled" class="form-control"  placeholder="Precio" id="precio" require>       
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
@@ -35,8 +38,8 @@
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="estado">Estado</label>
-                                    <select class="form-select" name="estado" id="estado">
-                                        <option value="vivo">Vivo</option>
+                                    <select class="form-select" onchange="verifica(this.value)" name="estado" id="estado">
+                                        <option value="vivo">Sano</option>
                                         <option value="enfermo">Enfermo</option>
                                         <option value="muerto">Muerto</option>
                                         <option value="sacrificio">Sacrificado</option>
@@ -100,18 +103,18 @@
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody>                                
                             <?php foreach($animales as $animal): ?>
                                 <tr>
                                     <td><?= $animal['id'] ?></td>
                                     <td><?= $animal['raza'] ?></td>
                                     <td><?= $animal['peso'] ?></td>
                                     <td><?= $animal['fecha_nacimiento'] ?></td>
-                                    <th><?= $animal['estado'] ?></th>
-                                    <th><?= $animal['lote'] ?></th>
+                                    <td><?= $animal['estado'] ?></td>
+                                    <td><?= $animal['lote'] ?></td>
                                     <td>                                        
                                         <a class="btn btn-danger text-white me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Cerdos/delete/<?= $animal['id'] ?>">Eliminar</a>
-                                        <a class="btn btn-primary text-white me-2 mb-2 mb-md-0" href="">Editar</a>
+                                        <a class="btn btn-primary text-white me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Cerdos/update/<?= $animal['id'] ?>">Editar</a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
@@ -128,24 +131,39 @@
 
 <script>
 
-$( function() {
-    $("#estado").change( function() {
-        if ($(this).val() === "enfermo") {
-            $('#enfermedad').prop("disabled", false);
-        } /*
-        else if ($(this).val() === "muerto") {
-            $('#causa-muerte').prop("disabled", true);
-        }
-        else if ($(this).val() === "sacrificio") {
-            $('#fecha-sacrificio').prop("disabled", true);
-        } */ 
-        else {
-            $('#enfermedad').prop("disabled", true);
-            //$('#fecha-sacrificio').prop("disabled", false);
-            //$('#causa-muerte').prop("disabled", false);
-        }
-    });
-});
+function comprobar(obj){
+    const precio = document.getElementById("precio");
+
+    if(obj.checked == true) {
+        precio.disabled = false;
+    } else {
+        precio.disabled = true;
+    }
+};
+
+function verifica(value){
+    const inputEnfermedad = document.getElementById("enfermedad");
+    const inputMuerto          = document.getElementById("causa-muerte");
+    const inputSacrificio       = document.getElementById("fecha-sacrificio");
+
+    if(value == 'enfermo'){
+        inputEnfermedad.disabled = false;
+        inputMuerto.disabled = true;
+        inputSacrificio.disabled =true;
+    } else if(value == 'muerto'){
+        inputEnfermedad.disabled = true;
+        inputMuerto.disabled = false;
+        inputSacrificio.disabled =true;
+    } else if(value == 'sacrificio'){
+        inputEnfermedad.disabled = true;
+        inputMuerto.disabled = true;
+        inputSacrificio.disabled = false;
+    } else if(value == 'vivo'){
+        inputEnfermedad.disabled = true;
+        inputMuerto.disabled = true;
+        inputSacrificio.disabled = true;
+    }
+};
   
 const Toast = Swal.mixin({
     toast: true,
@@ -162,18 +180,32 @@ const Toast = Swal.mixin({
   
 
   function create() {
-  
+    const estado = document.getElementById("estado");
+    const check = document.getElementById("comprado")
+
     let formData = {
         'raza': $("#raza").val(), 
         'fecha-nacimiento': $("#fecha-nacimiento").val(),
         'peso': $("#peso").val(),         
         'estado': $("#estado").val(), 
-        'lote': $("#lote").val()
+        'lote': $("#lote").val(),
+        'enfermedad': '',
+        'fecha-sacrificio': '',
+        'causa-muerte': '',
+        'precio': 0
     }
+
+    if(estado.value == 'enfermo') formData['enfermedad'] = $("#enfermedad").val();
+    else if(estado.value == 'muerto') formData['causa-muerte'] = $("#causa-muerte").val();
+    else if(estado.value == 'sacrificio') formData['fecha-sacrificio'] = $("#fecha-sacrificio").val();
+
+    if(check.checked == true) formData['precio'] = $("#precio").val();
+
+    console.log(formData);
 
     $.post("<?= base_url() ?>/Cerdos/create", formData, function (data) {     
 
-        console.log(formData);
+        //console.log(formData);
 
         if (data=='error') {        
             Toast.fire({
