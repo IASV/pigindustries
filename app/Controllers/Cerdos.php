@@ -14,7 +14,8 @@ class Cerdos extends BaseController
 
     public function index()
     {
-        $data = $this->getData();
+        $lotes = $query = $this->db->table('lote')->get()->getResultArray();     
+        $data = array("lotes" => $lotes);
 
         return view('elementos/header-menu').view('pig/crear', $data).view('elementos/footer');
     }
@@ -136,26 +137,5 @@ class Cerdos extends BaseController
 
         return view('elementos/header-menu').view('pig/editar', $data).view('elementos/footer');
     }
-
-    public function getData()
-    {
-        //consulta de lotes
-        $lotes = $query = $this->db->table('lote')->get()->getResultArray();     
-        //consulta de animales
-        //$animales = $query = $this->db->table('animal')->get()->getResultArray();          
-        //Dastos completos del animal
-        $sql = "SELECT a.id, a.raza, a.fecha_nacimiento, a.estado, a.peso, l.nombre as lote  FROM animal AS a, lote_animal AS la, lote AS l WHERE  a.id = la.id_animal AND la.id_lote = l.id";
-        $animales = $this->db->query($sql)->getResultArray();
-        //$lote = $this->db->table('lote')->where('id',$data['lote'])->get(1)->getResultArray();
-        //$datosAnimales = $animales;        
-        
-        //data
-        $data = array(
-            "animales" => $animales, 
-            "lotes" => $lotes
-            //"datosAnimales" => $datosAnimales
-        );
-
-        return $data;
-    }
+    
 }

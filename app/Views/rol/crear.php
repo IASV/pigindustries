@@ -14,40 +14,7 @@
             </form>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h6 class="card-title">Rols</h6>
-                    <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>ROL</th>
-                                    <th>Options</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach ($rols as $key => $r): ?>
-                                <tr>
-                                    <td><?= ($key + 1)?></td>
-                                    <td><?= $r['rol'] ?></td>
-                                    <td>
-                                        <a class="btn btn-danger text-white me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Rol/delete/<?= $r['id_rol'] ?>">Delete</a>
-                                    </td>
-                                </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
 
 <script>

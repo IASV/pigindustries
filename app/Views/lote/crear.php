@@ -14,38 +14,6 @@
             </form>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h6 class="card-title">Lotes</h6>
-                    <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>LOTE</th>
-                                    <th>OPTIONS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach ($lotes as $key => $l): ?>
-                                <tr>
-                                    <td><?= ($key + 1)?></td>
-                                    <td><?= $l['nombre'] ?></td>
-                                    <td>
-                                        <a class="btn btn-danger text-white me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Lote/delete/<?= $l['id'] ?>">Delete</a>
-                                    </td>
-                                </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>

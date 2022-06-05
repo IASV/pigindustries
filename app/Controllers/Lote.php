@@ -16,9 +16,9 @@ class Lote extends BaseController
         //$lotes = $query = $this->db->table('lote')->get()->getResultArray();                
         //$data = array("lotes" => $lotes);
 
-        $data = $this->getData();
+        //$data = $this->getData();
 
-        return view('elementos/header-menu').view('lote/crear', $data).view('elementos/footer');
+        return view('elementos/header-menu').view('lote/crear').view('elementos/footer');
     }
 
     public function add()
@@ -41,12 +41,6 @@ class Lote extends BaseController
         $query = $this->db->query($sql, [$id]);            
         print_r('ok');
         return redirect()->to('/Lote');
-    }
-
-    public function getData(){
-        $lotes = $query = $this->db->table('lote')->get()->getResultArray();                
-        $data = array("lotes" => $lotes);
-        return $data;
     }
 
 }

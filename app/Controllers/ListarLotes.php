@@ -13,7 +13,9 @@ class ListarLotes extends BaseController
 
     public function index()
     {
+        $lotes = $query = $this->db->table('lote')->get()->getResultArray();                
+        $data = array("lotes" => $lotes);
 
-        return view('elementos/header-menu').view('lote/listar').view('elementos/footer');
+        return view('elementos/header-menu').view('lote/listar', $data).view('elementos/footer');
     }
 }

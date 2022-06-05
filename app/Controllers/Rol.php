@@ -13,10 +13,10 @@ class Rol extends BaseController
 
     public function index()
     {
-        $rols = $query = $this->db->table('rol')->get()->getResultArray();                
-        $data = array("rols" => $rols);
+        //$rols = $query = $this->db->table('rol')->get()->getResultArray();                
+        //$data = array("rols" => $rols);
 
-        return view('elementos/header-menu').view('rol/crear', $data).view('elementos/footer');
+        return view('elementos/header-menu').view('rol/crear').view('elementos/footer');
     }
 
     public function add()

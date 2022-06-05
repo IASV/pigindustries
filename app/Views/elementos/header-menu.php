@@ -17,7 +17,7 @@ License: For each use you must have a valid license purchased only from above li
 	<meta name="author" content="NobleUI">
 	<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-	<title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+	<title>Pig.In</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,31 +60,31 @@ License: For each use you must have a valid license purchased only from above li
       </div>
       <div class="sidebar-body">
         <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
+          <li class="nav-item nav-category">Principal</li>
           <li class="nav-item">
             <a href="<?= base_url() ?>" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
+              <i class="link-icon" data-feather="pie-chart"></i>
+              <span class="link-title">Estadisticas</span>
             </a>
           </li>
           <!-- Account -->
-          <li class="nav-item nav-category">Account</li>
+          <li class="nav-item nav-category">Cuenta</li>
           <li class="nav-item">
             <a href="<?= base_url() ?>/CreateUser/" class="nav-link">
-              <i class="link-icon" data-feather="message-square"></i>
+              <i class="link-icon" data-feather="user-plus"></i>
               <span class="link-title">Crear nuevo usuario</span>
             </a>
           </li>
           <li class="nav-item">
             <a href="<?= base_url() ?>/ListarUsuarios/" class="nav-link">
-              <i class="link-icon" data-feather="calendar"></i>
+              <i class="link-icon" data-feather="users"></i>
               <span class="link-title">Lista de usuarios</span>
             </a>
           </li>
           <!-- Roles -->
           <li class="nav-item"> 
             <a class="nav-link" data-bs-toggle="collapse" href="#roles" role="button" aria-expanded="false" aria-controls="roles">
-              <i class="link-icon" data-feather="mail"></i>
+              <i class="link-icon" data-feather="user-check"></i>
               <span class="link-title">Roles</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -103,20 +103,20 @@ License: For each use you must have a valid license purchased only from above li
           <li class="nav-item nav-category">Cerdos</li>
           <li class="nav-item">
             <a href="<?= base_url() ?>/Cerdos/" class="nav-link">
-              <i class="link-icon" data-feather="calendar"></i>
-              <span class="link-title">Añadir nuevo cerdo</span>
+              <i class="link-icon" data-feather="plus-circle"></i>
+              <span class="link-title">Añadir cerdo</span>
             </a>
-          </li>   
+          </li>             
           <li class="nav-item">
             <a href="<?= base_url() ?>/ListarCerdos/" class="nav-link">
-              <i class="link-icon" data-feather="calendar"></i>
+              <i class="link-icon" data-feather="list"></i>
               <span class="link-title">Lista de cerdos</span>
             </a>
           </li>
           <!-- Lotes -->
           <li class="nav-item"> 
             <a class="nav-link" data-bs-toggle="collapse" href="#lotes" role="button" aria-expanded="false" aria-controls="lotes">
-              <i class="link-icon" data-feather="mail"></i>
+              <i class="link-icon" data-feather="flag"></i>
               <span class="link-title">Lotes</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -141,39 +141,6 @@ License: For each use you must have a valid license purchased only from above li
         </ul>
       </div>
     </nav>
-    <nav class="settings-sidebar">
-      <div class="sidebar-body">
-        <a href="#" class="settings-sidebar-toggler">
-          <i data-feather="settings"></i>
-        </a>
-        <h6 class="text-muted mb-2">Sidebar:</h6>
-        <div class="mb-3 pb-3 border-bottom">
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarLight" value="sidebar-light" checked>
-            <label class="form-check-label" for="sidebarLight">
-              Light
-            </label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarDark" value="sidebar-dark">
-            <label class="form-check-label" for="sidebarDark">
-              Dark
-            </label>
-          </div>
-        </div>
-        <div class="theme-wrapper">
-          <h6 class="text-muted mb-2">Light Theme:</h6>
-          <a class="theme-item active" href="<?= base_url() ?>/demo1/dashboard.html">
-            <img src="<?= base_url() ?>/assets/images/screenshots/light.jpg" alt="light theme">
-          </a>
-          <h6 class="text-muted mb-2">Dark Theme:</h6>
-          <a class="theme-item" href="<?= base_url() ?>/demo2/dashboard.html">
-            <img src="<?= base_url() ?>/assets/images/screenshots/dark.jpg" alt="light theme">
-          </a>
-        </div>
-      </div>
-    </nav>
-		<!-- partial -->
 	
 		<div class="page-wrapper">
 				

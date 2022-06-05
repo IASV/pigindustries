@@ -83,48 +83,6 @@
             </div>
         </div>
     </div>
-    <hr>
-
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h6 class="card-title">animales</h6>
-                    <div class="table-responsive">
-                        <table id="dataTableExample" class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Raza</th>
-                                    <th>Peso (kg)</th>
-                                    <th>Fecha Nacimiento</th>
-                                    <th>Estado</th>
-                                    <th>Lote</th>
-                                    <th>Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>                                
-                            <?php foreach($animales as $animal): ?>
-                                <tr>
-                                    <td><?= $animal['id'] ?></td>
-                                    <td><?= $animal['raza'] ?></td>
-                                    <td><?= $animal['peso'] ?></td>
-                                    <td><?= $animal['fecha_nacimiento'] ?></td>
-                                    <td><?= $animal['estado'] ?></td>
-                                    <td><?= $animal['lote'] ?></td>
-                                    <td>                                        
-                                        <a class="btn btn-danger text-white me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Cerdos/delete/<?= $animal['id'] ?>">Eliminar</a>
-                                        <a class="btn btn-primary text-white me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Cerdos/update/<?= $animal['id'] ?>">Editar</a>
-                                    </td>
-                                </tr>
-                            <?php endforeach ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
