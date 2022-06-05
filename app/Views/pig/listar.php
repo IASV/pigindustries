@@ -35,8 +35,15 @@
                                     <td><?= $animal['estado'] ?></td>
                                     <td><?= $animal['lote'] ?></td>
                                     <td>                                        
-                                        <a class="btn btn-danger text-white me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Cerdos/delete/<?= $animal['id'] ?>">Eliminar</a>
-                                        <a class="btn btn-primary text-white me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Cerdos/update/<?= $animal['id'] ?>">Editar</a>
+                                        <a class="btn text-danger me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Cerdos/delete/<?= $animal['id'] ?>">
+                                            <i class="link-icon" data-feather="trash"></i>
+                                        </a>
+                                        <a class="btn text-primary me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Cerdos/edit/<?= $animal['id'] ?>">
+                                            <i class="link-icon" data-feather="edit"></i>
+                                        </a>
+                                        <a class="btn text-info me-2 mb-2 mb-md-0 " href="<?= base_url() ?>/Cerdos/view/<?= $animal['id'] ?>">
+                                            <i class="link-icon" data-feather="eye"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

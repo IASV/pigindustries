@@ -123,7 +123,7 @@ class Cerdos extends BaseController
         return redirect()->to('/Cerdos');
     }
 
-    public function update($id)
+    public function edit($id)
     {
         $sql = "SELECT a.id, a.raza, a.fecha_nacimiento, a.estado, a.peso, l.nombre as lote  FROM animal AS a, lote_animal AS la, lote AS l WHERE  a.id = la.id_animal AND la.id_lote = l.id AND a.id = ?";
         $animal = $this->db->query($sql, [$id])->getResultArray();
@@ -136,6 +136,17 @@ class Cerdos extends BaseController
         );
 
         return view('elementos/header-menu').view('pig/editar', $data).view('elementos/footer');
+    }
+
+    public function update()
+    {
+        return;
+    }
+
+    public function view($id)
+    {
+
+        return view('elementos/header-menu').view('pig/ver').view('elementos/footer');
     }
     
 }
