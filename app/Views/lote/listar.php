@@ -27,7 +27,9 @@
                                     <td><?= ($key + 1)?></td>
                                     <td><?= $l['nombre'] ?></td>
                                     <td>
-                                        <a class="btn btn-danger text-white me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Lote/delete/<?= $l['id'] ?>">Delete</a>
+                                        <a class="btn text-danger me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Lote/delete/<?= $l['id'] ?>">
+                                            <i class="link-icon" data-feather="trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php endforeach ?>

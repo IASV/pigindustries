@@ -3,19 +3,19 @@
         <div class="col-md-12 stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Añadir Animal</h6>
+                    <h6 class="card-title">Actualizar Animal - ID <?= $animal['id'] ?></h6>
                     <form>
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label">Raza</label>
-                                    <input type="text" class="form-control" placeholder="Raza animal" id="raza" value="void">
+                                    <input type="text" class="form-control" placeholder="Raza animal" id="raza" value="<?= $animal['raza'] ?>">
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="fecha-nacimiento">Fecha de nacimiento</label>
-                                    <input type="date" class="form-control"  placeholder="Fecha nacimiento" id="fecha-nacimiento" value="void" require>
+                                    <input type="date" class="form-control"  placeholder="Fecha nacimiento" id="fecha-nacimiento" value="<?= $animal['fecha_nacimiento'] ?>" require>
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-4">
@@ -32,13 +32,13 @@
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label">Peso (kg)</label>
-                                    <input type="number" class="form-control" placeholder="Peso" id="peso" value="0">
+                                    <input type="number" class="form-control" placeholder="Peso" id="peso" value="<?= $animal['peso'] ?>">
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="estado">Estado</label>
-                                    <select class="form-select" onchange="verifica(this.value)" name="estado" id="estado" value="void">
+                                    <select class="form-select" onchange="verifica(this.value)" name="estado" id="estado" value="<?= $animal['estado'] ?>">
                                         <option value="vivo">Sano</option>
                                         <option value="enfermo">Enfermo</option>
                                         <option value="muerto">Muerto</option>
@@ -49,7 +49,7 @@
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="lote">Lote</label>
-                                    <select class="form-select" name="lote" id="lote" value="void">
+                                    <select class="form-select" name="lote" id="lote" value="<?= $animal['lote'] ?>">
                                         <?php foreach($lotes as $lote): ?>
                                         <option value="<?= $lote['id'] ?>"><?= $lote['nombre'] ?></option>                                        
                                         <?php endforeach ?>

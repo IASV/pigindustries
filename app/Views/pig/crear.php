@@ -39,7 +39,7 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="estado">Estado</label>
                                     <select class="form-select" onchange="verifica(this.value)" name="estado" id="estado">
-                                        <option value="vivo">Sano</option>
+                                        <option value="sano">Sano</option>
                                         <option value="enfermo">Enfermo</option>
                                         <option value="muerto">Muerto</option>
                                         <option value="sacrificio">Sacrificado</option>
@@ -116,7 +116,7 @@ function verifica(value){
         inputEnfermedad.disabled = true;
         inputMuerto.disabled = true;
         inputSacrificio.disabled = false;
-    } else if(value == 'vivo'){
+    } else if(value == 'sano'){
         inputEnfermedad.disabled = true;
         inputMuerto.disabled = true;
         inputSacrificio.disabled = true;

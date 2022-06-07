@@ -63,7 +63,7 @@ class Cerdos extends BaseController
             //Enfermo
             if($data['enfermedad'] != ''){
                 $enfermo = [
-                    'nombre' => $data['enfermedad'],
+                    'nombre' => strtolower($data['enfermedad']),
                     'id_animal' => $id,
                 ];
                 $builderE = $this->db->table('enfermo');
@@ -81,7 +81,7 @@ class Cerdos extends BaseController
             //Muerto
             else if($data['causa-muerte'] != ''){
                 $muerto = [
-                    'causa' => $data['fecha-sacrificio'],
+                    'causa' => strtolower($data['fecha-sacrificio']),
                     'id_animal' => $id,
                 ];
                 $builderM = $this->db->table('muerto');
@@ -132,7 +132,7 @@ class Cerdos extends BaseController
 
         $data = array(
             "lotes" => $lotes,
-            "animal" => $animal
+            "animal" => $animal[0]
         );
 
         return view('elementos/header-menu').view('pig/editar', $data).view('elementos/footer');
@@ -145,8 +145,56 @@ class Cerdos extends BaseController
 
     public function view($id)
     {
+        #Información del animal
+        $sql = "SELECT a.id, a.raza, a.fecha_nacimiento, a.estado, a.peso, l.nombre as lote  FROM animal AS a, lote_animal AS la, lote AS l WHERE  a.id = la.id_animal AND la.id_lote = l.id AND a.id = ?";
+        $animal = $this->db->query($sql, [$id])->getResultArray();
 
-        return view('elementos/header-menu').view('pig/ver').view('elementos/footer');
+        //Historial del peso
+        $sql = "SELECT id, peso, fecha FROM historial_peso WHERE id_animal = ?";
+        $historialPeso = $this->db->query($sql, [$id])->getResultArray();
+
+        //Información de salud
+        
+        //Enfermedad
+        $enfermedad = $this->db->table('enfermo')->where('id_animal', [$id])->get(1)->getResultArray();
+        if (count($enfermedad) > 0) $enfermedad = array("nombre"=>$enfermedad[0]['nombre']);
+        else $enfermedad = array("nombre"=>'ninguna');
+
+
+        //Fecha de sacrificio
+        $sacrificio = $this->db->table('sacrificio')->where('id_animal', [$id])->get(1)->getResultArray();
+        if (count($sacrificio) > 0) $sacrificio = array("fecha"=>$sacrificio[0]['fecha']);
+        else $sacrificio = array("fecha"=>'ninguna');
+
+        //Causa de muerte
+        $muerte = $this->db->table('muerto')->where('id_animal', [$id])->get(1)->getResultArray();
+        if (count($muerte) > 0) $muerte = array("causa"=>$muerte[0]['causa']);
+        else $muerte = array("causa"=>'ninguna');
+
+        //Información de adquisición
+        //Forma de adquisición
+        $forma = array("forma"=>'ninguna');
+        $precio = $this->db->table('animal_comprado')->where('id_animal', [$id])->get(1)->getResultArray();
+        if (count($precio) > 0) {
+            $forma = array("forma"=>'comprado');
+            $precio = array("adquirido"=>'$'.$precio[0]['precio']);
+        }        
+        else {
+            $forma = array("forma"=>'Producido');
+            $precio = array("adquirido"=>'');
+        }
+
+        $data = array(
+            "animal" => $animal[0],
+            "historialPeso" => $historialPeso,
+            "enfermedad" => $enfermedad,
+            "sacrificio" => $sacrificio,
+            "muerte" => $muerte,
+            "forma" => $forma,
+            "precio" => $precio
+        );
+
+        return view('elementos/header-menu').view('pig/ver', $data).view('elementos/footer');
     }
     
 }
