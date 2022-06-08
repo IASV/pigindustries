@@ -4,7 +4,12 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Información del animal</h6>
+                        <div class="d-flex">
+                            <a class="btn text-dark" href="javascript: history.go(-1)">
+                                <i class="link-icon" data-feather="arrow-left"></i>
+                            </a>
+                            <h6 class="btn card-title">Información del animal</h6>
+                        </div> 
                         <br>
                         <form>
                             <div class="row">
@@ -62,7 +67,7 @@
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body">                     
                         <h6 class="card-title">Información de salud</h6>
                         <br>
                         <form>                        

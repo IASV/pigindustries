@@ -3,13 +3,19 @@
         <div class="col-md-12 stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Actualizar Animal - ID <?= $animal['id'] ?></h6>
+                    <div class="d-flex">
+                        <a class="btn text-dark" href="javascript: history.go(-1)">
+                            <i class="link-icon" data-feather="arrow-left"></i>
+                        </a>
+                        <h6 class="btn card-title">Actualizar Animal - ID <?= $animal['id'] ?></h6>
+                    </div>                    
                     <form>
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label">Raza</label>
                                     <input type="text" class="form-control" placeholder="Raza animal" id="raza" value="<?= $animal['raza'] ?>">
+                                    <input type="hidden" class="form-control" placeholder="Raza animal" id="id" value="<?= $animal['id'] ?>">
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-4">
@@ -19,13 +25,23 @@
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-4">
-                                <div class="mb-2 form-label">
-                                    <input class="form-check-input" onchange="comprobar(this);" type="checkbox" value="" id="comprado">
-                                    <label class="form-check-label" for="comprado">Comprado</label>                                                                                                                                           
+                            <? if($precio['adquirido'] != 0):  ?>
+                                <div class="mb-2 form-label">                                
+                                    <input class="form-check-input" onchange="comprobar(this);" type="checkbox" value="" id="comprado" checked>
+                                    <label class="form-check-label" for="comprado">Comprado</label>                                                                                                                                                                                                         
                                 </div>
                                 <div class="mb-3">
-                                    <input type="number" disabled="disabled" class="form-control"  placeholder="Precio" id="precio" require>       
+                                    <input type="number" value="<?= $precio['adquirido'] ?>" class="form-control"  placeholder="Precio" id="precio" require>       
                                 </div>
+                            <? else: ?> 
+                                <div class="mb-2 form-label">                                                                                                                                                                                                      
+                                    <input class="form-check-input" onchange="comprobar(this);" type="checkbox" value="" id="comprado">
+                                    <label class="form-check-label" for="comprado">Comprado</label>                                    
+                                </div>
+                                <div class="mb-3">
+                                    <input type="number" disabled="disabled" class="form-control"  placeholder="Precio"  value='0' id="precio" require>       
+                                </div>
+                            <? endif; ?>   
                             </div><!-- Col -->
                         </div><!-- Row -->
                         <div class="row">
@@ -38,20 +54,27 @@
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="estado">Estado</label>
-                                    <select class="form-select" onchange="verifica(this.value)" name="estado" id="estado" value="<?= $animal['estado'] ?>">
-                                        <option value="vivo">Sano</option>
-                                        <option value="enfermo">Enfermo</option>
-                                        <option value="muerto">Muerto</option>
-                                        <option value="sacrificio">Sacrificado</option>
+                                    <select class="form-select" onchange="verifica(this.value)" name="estado" id="estado">
+                                        <?php $estados = ['sano','enfermo','muerto','sacrificio']; foreach($estados as $estado): ?>
+                                            <? if($estado == $animal['estado']):  ?>
+                                            <option value="<?= $estado ?>" selected="true"><?= $estado?></option>
+                                            <? else: ?>
+                                            <option value="<?= $estado ?>"><?= $estado?></option>
+                                            <? endif; ?>                                                                                               
+                                        <?php endforeach ?>                                  
                                     </select>
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="lote">Lote</label>
-                                    <select class="form-select" name="lote" id="lote" value="<?= $animal['lote'] ?>">
+                                    <select class="form-select" name="lote" id="lote">
                                         <?php foreach($lotes as $lote): ?>
-                                        <option value="<?= $lote['id'] ?>"><?= $lote['nombre'] ?></option>                                        
+                                            <? if($lote['nombre'] == $animal['lote']):  ?>
+                                                <option value="<?= $lote['id'] ?>" selected="true"><?= $lote['nombre'] ?></option>  
+                                            <? else: ?>
+                                                <option value="<?= $lote['id'] ?>"><?= $lote['nombre'] ?></option>
+                                            <? endif; ?>                                                                                               
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -61,24 +84,39 @@
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label">Enfermedad</label>
-                                    <input type="text" disabled="disabled" class="form-control" placeholder="Nombre" id="enfermedad">
+                                    <? if($enfermedad['nombre'] != ''): ?>
+                                        <input type="text" class="form-control" placeholder="Nombre" id="enfermedad" value="<?= $enfermedad['nombre'] ?>">
+                                    <? else: ?>
+                                        <input type="text" disabled="disabled" class="form-control" placeholder="Nombre" id="enfermedad">
+                                    <? endif; ?>
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="fecha-nacimiento">Fecha del sacrificio</label>
-                                    <input type="date" disabled="disabled" class="form-control"  placeholder="Fecha sacrificio" id="fecha-sacrificio" require>
+                                    <? if($sacrificio['fecha'] != ''): ?>
+                                        <input type="date" class="form-control"  placeholder="Fecha sacrificio" id="fecha-sacrificio" value="<?= $sacrificio['fecha'] ?>" require>
+                                    <? else: ?>
+                                        <input type="date" disabled="disabled" class="form-control"  placeholder="Fecha sacrificio" id="fecha-sacrificio" require>
+                                    <? endif; ?>
                                 </div>
                             </div><!-- Col -->
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="fecha-nacimiento">Causa de muerte</label>
-                                    <input type="text" disabled="disabled" class="form-control"  placeholder="Causa" id="causa-muerte" require>
+                                    <? if($muerte['causa'] != ''): ?>
+                                        <input type="text" class="form-control"  placeholder="Causa" id="causa-muerte" value="<?= $muerte['causa'] ?>" require>
+                                    <? else: ?>
+                                        <input type="text" disabled="disabled" class="form-control"  placeholder="Causa" id="causa-muerte" require>
+                                    <? endif; ?>
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
                     </form>
                     <button type="button" class="btn btn-primary submit" onclick="update()">Actualizar</button>
+                    <a class="btn text-info me-2 mb-2 mb-md-0 " href="<?= base_url() ?>/Cerdos/view/<?= $animal['id'] ?>">
+                        <i class="link-icon" data-feather="eye"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -94,9 +132,10 @@ function comprobar(obj){
     const precio = document.getElementById("precio");
 
     if(obj.checked == true) {
-        precio.disabled = false;
+        precio.disabled = false;        
     } else {
         precio.disabled = true;
+        precio.value = 0;
     }
 };
 
@@ -107,20 +146,29 @@ function verifica(value){
 
     if(value == 'enfermo'){
         inputEnfermedad.disabled = false;
-        inputMuerto.disabled = true;
-        inputSacrificio.disabled =true;
+        inputMuerto.disabled = true;        
+        inputSacrificio.disabled =true;        
+        inputMuerto.value = '';
+        inputSacrificio.value = '';
     } else if(value == 'muerto'){
         inputEnfermedad.disabled = true;
         inputMuerto.disabled = false;
         inputSacrificio.disabled =true;
+        inputEnfermedad.value = '';
+        inputSacrificio.value = '';
     } else if(value == 'sacrificio'){
         inputEnfermedad.disabled = true;
         inputMuerto.disabled = true;
         inputSacrificio.disabled = false;
-    } else if(value == 'vivo'){
+        inputEnfermedad.value = '';
+        inputMuerto.value = '';
+    } else if(value == 'sano'){
         inputEnfermedad.disabled = true;
         inputMuerto.disabled = true;
         inputSacrificio.disabled = true;
+        inputEnfermedad.value = '';
+        inputMuerto.value = '';
+        inputSacrificio.value = '';
     }
 };
   
@@ -143,6 +191,7 @@ const Toast = Swal.mixin({
     const check = document.getElementById("comprado")
 
     let formData = {
+        'id': $("#id").val(),
         'raza': $("#raza").val(), 
         'fecha-nacimiento': $("#fecha-nacimiento").val(),
         'peso': $("#peso").val(),         
@@ -151,7 +200,7 @@ const Toast = Swal.mixin({
         'enfermedad': '',
         'fecha-sacrificio': '',
         'causa-muerte': '',
-        'precio': 0
+        'precio': '0'
     }
 
     if(estado.value == 'enfermo') formData['enfermedad'] = $("#enfermedad").val();
@@ -164,8 +213,6 @@ const Toast = Swal.mixin({
 
     $.post("<?= base_url() ?>/Cerdos/update", formData, function (data) {     
 
-        //console.log(formData);
-
         if (data=='error') {        
             Toast.fire({
                 icon: 'error',
@@ -173,7 +220,11 @@ const Toast = Swal.mixin({
             });
         }
         if (data=='ok') {                    
-            window.location.href = '<?= base_url() ?>/Cerdos';
+            Toast.fire({
+                icon: 'success',
+                title: 'Good job!'
+            });
+            window.location.href = '<?= base_url() ?>/Cerdos/edit/<?= $animal['id'] ?>';            
         }
 
     });

@@ -63,3 +63,49 @@
     </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+
+<script>
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
+  
+
+  function entrar() {
+  
+
+    $.post("<?= base_url() ?>/login/entrar", {'usuario': $("#usuario").val(), 'password': $("#password").val()}, function (data) {
+     
+      if (data=='error') {
+        
+        Toast.fire({
+          icon: 'error',
+          title: 'Error inicio de sesion '
+        });
+
+      }
+
+
+      if (data=='ok') {
+        
+        window.location.href = '<?= base_url() ?>';
+      }
+
+      
+      
+    });
+
+  }
+
+</script>
