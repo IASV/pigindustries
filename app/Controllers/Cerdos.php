@@ -102,40 +102,46 @@ class Cerdos extends BaseController
 
     public function delete($id)
     {
-        //Tabla enfermo
-        $builder = $this->db->table('enfermo');
-        $query = $this->db->table('enfermo')->where('id_animal', [$id])->get(1)->getResultArray();
-        if (count($query) > 0) $builder->delete(['id_animal' => $id]);
+        try {
+             //Tabla enfermo
+            $builder = $this->db->table('enfermo');
+            $query = $this->db->table('enfermo')->where('id_animal', [$id])->get(1)->getResultArray();
+            if (count($query) > 0) $builder->delete(['id_animal' => $id]);
 
-        //Tabla sacrificio
-        $builder = $this->db->table('sacrificio');
-        $query = $this->db->table('sacrificio')->where('id_animal', [$id])->get(1)->getResultArray();
-        if (count($query) > 0) $builder->delete(['id_animal' => $id]);
+            //Tabla sacrificio
+            $builder = $this->db->table('sacrificio');
+            $query = $this->db->table('sacrificio')->where('id_animal', [$id])->get(1)->getResultArray();
+            if (count($query) > 0) $builder->delete(['id_animal' => $id]);
 
-        //Tabla muerto
-        $builder = $this->db->table('muerto');
-        $query = $this->db->table('muerto')->where('id_animal', [$id])->get(1)->getResultArray();
-        if (count($query) > 0) $builder->delete(['id_animal' => $id]);       
+            //Tabla muerto
+            $builder = $this->db->table('muerto');
+            $query = $this->db->table('muerto')->where('id_animal', [$id])->get(1)->getResultArray();
+            if (count($query) > 0) $builder->delete(['id_animal' => $id]);       
 
-        //Tabla animal comprado
-        $builder = $this->db->table('animal_comprado');
-        $query = $this->db->table('animal_comprado')->where('id_animal', [$id])->get(1)->getResultArray();
-        if (count($query) > 0) $builder->delete(['id_animal' => $id]);
-        
-        //Tabla historialPeso
-        $sql = "DELETE FROM historial_peso WHERE id_animal = ?";
-        $query = $this->db->query($sql, [$id]);     
+            //Tabla animal comprado
+            $builder = $this->db->table('animal_comprado');
+            $query = $this->db->table('animal_comprado')->where('id_animal', [$id])->get(1)->getResultArray();
+            if (count($query) > 0) $builder->delete(['id_animal' => $id]);
+            
+            //Tabla historialPeso
+            $sql = "DELETE FROM historial_peso WHERE id_animal = ?";
+            $query = $this->db->query($sql, [$id]);     
 
-        //Tabla loteAnimal
-        $sql = "DELETE FROM lote_animal WHERE id_animal = ?";
-        $query = $this->db->query($sql, [$id]);  
+            //Tabla loteAnimal
+            $sql = "DELETE FROM lote_animal WHERE id_animal = ?";
+            $query = $this->db->query($sql, [$id]);  
 
-        //Tabla animal
-        $sql = "DELETE FROM animal WHERE  id = ?";
-        $query = $this->db->query($sql, [$id]);           
+            //Tabla animal
+            $sql = "DELETE FROM animal WHERE  id = ?";
+            $query = $this->db->query($sql, [$id]);           
 
-        print_r('ok');
-        return redirect()->to('/Cerdos');
+            print_r('ok');
+            return;
+        } catch (Throwable $th) {
+            print_r('error');
+            return;
+        }
+       
     }
 
     public function edit($id)

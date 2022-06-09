@@ -35,7 +35,7 @@
                                     <td><?= $animal['estado'] ?></td>
                                     <td><?= $animal['lote'] ?></td>
                                     <td>                                        
-                                        <a class="btn text-danger me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Cerdos/delete/<?= $animal['id'] ?>">
+                                        <a class="btn text-danger me-2 mb-2 mb-md-0" onclick="eliminar(<?= $animal['id'] ?>)">
                                             <i class="link-icon" data-feather="trash"></i>
                                         </a>
                                         <a class="btn text-primary me-2 mb-2 mb-md-0" href="<?= base_url() ?>/Cerdos/edit/<?= $animal['id'] ?>">
@@ -69,43 +69,35 @@
 <script>
 
   const Toast = Swal.mixin({
-    toast: true,
-    position: 'bottom',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
+    buttons: true,
+    dangerMode: true,
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
   })
 
-  
-
-  function entrar() {
-  
-
-    $.post("<?= base_url() ?>/login/entrar", {'usuario': $("#usuario").val(), 'password': $("#password").val()}, function (data) {
-     
-      if (data=='error') {
-        
-        Toast.fire({
-          icon: 'error',
-          title: 'Error inicio de sesion '
-        });
-
-      }
-
-
-      if (data=='ok') {
-        
-        window.location.href = '<?= base_url() ?>';
-      }
-
-      
-      
-    });
-
+  function eliminar(id) {
+    Toast.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+    })
+    .then((result) => {
+        if (result.isConfirmed) {
+            $.post("<?= base_url() ?>/Cerdos/delete/"+id, {}, function (data) {     
+                if (data=='error') {                
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Error'
+                    });
+                }
+                if (data=='ok') {                
+                    window.location.href = '<?= base_url() ?>/ListarCerdos';
+                }
+            });                        
+        }
+    })
   }
 
 </script>

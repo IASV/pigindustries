@@ -162,21 +162,20 @@ const Toast = Swal.mixin({
     console.log(formData);
 
     $.post("<?= base_url() ?>/Cerdos/create", formData, function (data) {     
-
-        //console.log(formData);
-
-        if (data=='error') {        
+        if (data=='error') {                
             Toast.fire({
                 icon: 'error',
-                title: 'Error '
+                title: 'Error'
             });
         }
-        if (data=='ok') {                    
-            window.location.href = '<?= base_url() ?>/Cerdos';
+        if (data=='ok') {                
+            Swal.fire(
+                'Created!',
+                'Your register has been created.',
+                'success'
+            )                                
         }
-
     });
-
   }
 
 </script>

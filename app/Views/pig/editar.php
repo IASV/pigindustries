@@ -220,11 +220,11 @@ const Toast = Swal.mixin({
             });
         }
         if (data=='ok') {                    
-            Toast.fire({
-                icon: 'success',
-                title: 'Good job!'
-            });
-            window.location.href = '<?= base_url() ?>/Cerdos/edit/<?= $animal['id'] ?>';            
+            Swal.fire(
+                'Created!',
+                'Your register has been created.',
+                'success'
+            )                     
         }
 
     });
