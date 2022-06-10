@@ -130,7 +130,22 @@ License: For each use you must have a valid license purchased only from above li
                 </li>  
               </ul>
             </div>
-          </li>                
+          </li>             
+          <!-- Productos -->
+          <li class="nav-item nav-category">Productos</li>
+          <li class="nav-item">
+            <a href="<?= base_url() ?>/Productos/" class="nav-link">
+              <i class="link-icon" data-feather="plus-circle"></i>
+              <span class="link-title">Añadir producto</span>
+            </a>
+          </li>             
+          <li class="nav-item">
+            <a href="<?= base_url() ?>/ListarProductos/" class="nav-link">
+              <i class="link-icon" data-feather="list"></i>
+              <span class="link-title">Lista de productos</span>
+            </a>
+          </li>           
+          <!-- Documentos -->
           <li class="nav-item nav-category">Docs</li>
           <li class="nav-item">
             <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
@@ -169,7 +184,7 @@ License: For each use you must have a valid license purchased only from above li
 										<img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80" alt="">
 									</div>
 									<div class="text-center">
-										<p class="tx-16 fw-bolder">Raaaaaaaaa</p>
+										<p class="tx-16 fw-bolder">UserName</p>
 										<p class="tx-12 text-muted">faraonlovesheldi@pigindustries.com</p>
 									</div>
 								</div>
