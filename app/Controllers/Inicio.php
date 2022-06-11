@@ -13,7 +13,11 @@ class Inicio extends BaseController
 
   public function index()
   {
-    return view('elementos/header-menu').view('inicio').view('elementos/footer');
+    $sql = "SELECT * FROM animal";
+    $animales = $this->db->query($sql)->getResultArray();
+    $data = array("cantidad" => count($animales));
+
+    return view('elementos/header-menu').view('inicio', $data).view('elementos/footer');
   }
 
   public function salir()
