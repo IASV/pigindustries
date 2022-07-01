@@ -15,13 +15,13 @@ class CreateUser extends BaseController
 
     public function index()
     {
-        $data = $this->getData();
+        $data = $this->add();
 
         return view('elementos/header-menu').view('account/crear', $data).view('elementos/footer');
     }
 
 
-    public function getData(){
+    public function add(){
         //consulta de roles
         $roles = $query = $this->db->table('rol')->get()->getResultArray();     
         //consulta de animales         

@@ -103,3 +103,12 @@
     </div>
   </div>
 </div>
+
+
+<script>
+
+  function add(){
+
+    $.post("<?= base_url() ?>/crear/add",)
+  }
+</script>
